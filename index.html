@@ -1,1 +1,661 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garimpeira de Cabide | Brechó Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --verde-oliva: #37472b;
+            --verde-militar: #24301c;
+            --dourado-brilhante: #d4af37;
+            --off-white: #fdfbf7;
+            --nude: #e6d5c3;
+            --texto-escuro: #1a2115;
+            --branco: #ffffff;
+            --sombra-leve: rgba(55, 71, 43, 0.06);
+            --fonte-titulos: 'Playfair Display', serif;
+            --fonte-textos: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fonte-textos);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--texto-escuro);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(253, 251, 247, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(55, 71, 43, 0.06);
+        }
+
+        .logo {
+            font-family: var(--fonte-titulos);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--verde-oliva);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dourado-brilhante);
+        }
+
+        header {
+            margin-top: 70px;
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: var(--branco);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('banner.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(36, 48, 28, 0.75), rgba(36, 48, 28, 0.85));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: var(--fonte-titulos);
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 em {
+            font-style: italic;
+            font-family: var(--fonte-titulos);
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--off-white);
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            width: 100%;
+            max-width: 290px;
+        }
+
+        .btn-gold {
+            background-color: var(--dourado-brilhante);
+            color: var(--verde-militar);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            background-color: var(--branco);
+            color: var(--verde-oliva);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--branco);
+            color: var(--branco);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--branco);
+            color: var(--verde-militar);
+            transform: translateY(-3px);
+        }
+
+        .secao-avaliacoes {
+            background-color: var(--branco);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(55, 71, 43, 0.05);
+        }
+
+        .resumo-google {
+            margin-bottom: 40px;
+        }
+
+        .estrelas-gold {
+            color: var(--dourado-brilhante);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .nota-google {
+            font-family: var(--fonte-titulos);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--verde-oliva);
+        }
+
+        .texto-resumo-google {
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin: 15px auto 0 auto;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .carrossel-container {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            padding: 20px 10px;
+            scrollbar-width: thin;
+        }
+
+        .card-depoimento {
+            background: var(--off-white);
+            border-left: 3px solid var(--dourado-brilhante);
+            padding: 25px;
+            min-width: 280px;
+            flex: 1;
+            border-radius: 4px;
+            text-align: left;
+            box-shadow: 0 5px 15px var(--sombra-leve);
+        }
+
+        .card-depoimento p {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .card-depoimento h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--verde-oliva);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-ver-todas {
+            background-color: var(--verde-oliva);
+            color: var(--branco);
+            font-size: 0.75rem;
+            padding: 12px 25px;
+        }
+
+        .btn-ver-todas:hover {
+            background-color: var(--dourado-brilhante);
+            color: var(--verde-militar);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-family: var(--fonte-titulos);
+            font-size: 2rem;
+            color: var(--verde-oliva);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sub-secao {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            font-weight: 300;
+        }
+
+        .grid-vitrine {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .foto-vitrine-wrapper {
+            background-color: var(--branco);
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px var(--sombra-leve);
+            transition: transform 0.4s;
+        }
+
+        .foto-vitrine-wrapper:hover {
+            transform: translateY(-5px);
+        }
+
+        .foto-vitrine {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .secao-lives {
+            background-color: var(--verde-militar);
+            color: var(--branco);
+            border-radius: 4px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .secao-lives h3 {
+            font-family: var(--fonte-titulos);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .secao-lives p {
+            color: var(--nude);
+            font-size: 0.95rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .vantagens-lives {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: left;
+        }
+
+        .item-vantagem {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 15px 20px;
+            border-radius: 4px;
+            border-left: 2px solid var(--dourado-brilhante);
+        }
+
+        .item-vantagem i {
+            color: var(--dourado-brilhante);
+            font-size: 1.1rem;
+        }
+
+        .item-vantagem span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .bg-historia {
+            background-color: var(--branco);
+        }
+        
+        .conteudo-historia {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 2;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .grid-diferenciais {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .card-diferencial {
+            background-color: var(--branco);
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 8px 25px var(--sombra-leve);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .card-diferencial:hover {
+            border-bottom-color: var(--dourado-brilhante);
+            transform: translateY(-3px);
+        }
+
+        .card-diferencial i {
+            font-size: 2rem;
+            color: var(--verde-oliva);
+            margin-bottom: 20px;
+        }
+
+        .card-diferencial h4 {
+            font-family: var(--fonte-titulos);
+            font-size: 1.1rem;
+            color: var(--verde-militar);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .card-diferencial p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .container-mapa {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px var(--sombra-leve);
+        }
+
+        .bloco-endereco {
+            text-align: center;
+        }
+
+        .bloco-endereco h4 {
+            font-family: var(--fonte-titulos);
+            font-size: 1.2rem;
+            color: var(--verde-oliva);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .bloco-endereco p {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .mapa-iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: var(--verde-militar);
+            color: var(--branco);
+            text-align: center;
+            padding: 50px 20px 30px 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulos);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.05);
+            color: var(--branco);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-icon:hover {
+            background-color: var(--dourado-brilhante);
+            color: var(--verde-militar);
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--nude);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: var(--branco);
+        }
+
+        .wpp-premium {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .wpp-premium:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 768px) {
+            .hero-buttons { flex-direction: row; }
+            .grid-vitrine { grid-template-columns: repeat(2, 1fr); }
+            .vantagens-lives { grid-template-columns: repeat(2, 1fr); }
+            .grid-diferenciais { grid-template-columns: repeat(2, 1fr); }
+            .container-mapa { flex-direction: row; align-items: center; }
+            .bloco-endereco { text-align: left; width: 40%; }
+            .mapa-iframe { width: 60%; }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-diferenciais { grid-template-columns: repeat(4, 1fr); }
+            header h1 { font-size: 3.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Garimpeira de Cabide</div>
+        <div class="nav-links">
+            <a href="#vitrine">Vitrine</a>
+            <a href="#lives">Lives</a>
+            <a href="#sobre">Nossa História</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Moda com história.<br>Estilo com <em>personalidade</em>.</h1>
+            <p>Um brechó online de moda feminina com foco em elegância, sustentabilidade e atendimento personalizado. Peças cuidadosamente selecionadas para mulheres que valorizam qualidade e consumo consciente.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5511916120633?text=Olá!%20Conheci%20o%20Brechó%20Garimpeira%20de%20Cabide%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20novidades." class="btn btn-gold" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar no WhatsApp
+                </a>
+                <a href="https://www.instagram.com/brechogarimpeiradecabide?igsh=MXVma2c2NzI5d2N4cw==" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-instagram"></i> Ver Instagram
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="secao-avaliacoes">
+        <div class="resumo-google">
+            <div class="estrelas-gold">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <div class="nota-google">5.0 / 5.0</div>
+            <p class="texto-resumo-google">Mais de 67 clientes confiam no Brechó Garimpeira de Cabide para encontrar peças lindas, selecionadas com carinho e excelente custo-benefício.</p>
+        </div>
+
+        <div class="carrossel-container">
+            <div class="card-depoimento">
+                <p>"Peças maravilhosas, super limpas e cheirosas! O atendimento da Gabriela é impecável, super atenciosa nas lives."</p>
+                <h5>Regiane M.</h5>
+            </div>
+            <div class="card-depoimento">
+                <p>"Melhor brechó de Bragança! Roupas de marca com preço justo e qualidade de loja nova. Super recomendo!"</p>
+                <h5>Amanda S.</h5>
+            </div>
+            <div class="card-depoimento">
+                <p>"As lives são super divertidas e os garimpos são incríveis. Minha sacolinha está sempre cheia!"</p>
+                <h5>Camila F.</h5>
+            </div>
+        </div>
+
+        <a href="https://maps.app.goo.gl/kx81opoKf62TgC8A8" class="btn btn-ver-todas" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Ver todas no Google Maps
+        </a>
+    </div>
+
+    <section id="vitrine">
+        <h2 class="titulo-secao">Nossa Vitrine</h2>
+        <p class="sub-secao">Uma amostra do padrão de sofisticação e curadoria cuidadosa que você encontra diariamente aqui</p>
+        
+        <div class="grid-vitrine">
+            <div class="foto-vitrine-wrapper">
+                <img class="foto-vitrine" src="look1.jpg" alt="Novidade Garimpeira de Cabide">
+            </div>
+            <div class="foto-vitrine-wrapper">
+                <img class="foto-vitrine" src="look2.jpg" alt="Novidade Garimpeira de Cabide">
+            </div>
+            <div class="foto-vitrine-wrapper">
+                <img class="foto-vitrine" src="look3.jpg" alt="Novidade Garimpeira de Cabide">
+            </div>
+            <div class="foto-vitrine-wrapper">
+                <img class="foto-vitrine" src="look4.jpg" alt="Novidade Garimpeira de Cabide">
+            </div>
+        </div>
+    </section>
+
+    <section id="lives" style="padding-top: 0;">
+        <div class="secao-lives">
+            <h3>As Vendas acontecem nas Lives</h3>
+            <p>Trabalhamos com peças de alta rotatividade e exclusivas. Para garantir seus garimpos antes que esgotem, participe das nossas transmissões ao vivo no Facebook e TikTok!</p>
+            
+            <div class="vantagens-lives">
+                <div class="item-vantagem"><i class="fas fa-check"></i> <span>Novidades toda semana</span></div>
+                <div class="item-vantagem"><i class="fas fa-tag"></i> <span>Descontos Exclusivos</span></div>
+                <div class="item-vantagem"><i class="fas fa-comments"></i> <span>Atendimento ao vivo</span></div>
+                <div class="item-vantagem"><i class="fas fa-truck"
