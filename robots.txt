@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://garimpeiradecabide.github.io/site/sitemap.xml
