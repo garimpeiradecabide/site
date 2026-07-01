@@ -66,7 +66,9 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -79,7 +81,7 @@
         }
 
         header {
-            margin-top: 110px;
+            margin-top: 130px;
             position: relative;
             min-height: 60vh;
             display: flex;
@@ -302,6 +304,44 @@
             color: #333;
         }
 
+        /* ESTILO DA POLÍTICA DE TROCAS */
+        .bg-trocas {
+            background-color: var(--off-white);
+            border-top: 1px solid rgba(55, 71, 43, 0.05);
+        }
+
+        .grid-trocas {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card-troca {
+            background-color: var(--branco);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--sombra-leve);
+            border-top: 4px solid var(--verde-oliva);
+        }
+
+        .card-troca h4 {
+            font-family: var(--fonte-titulos);
+            font-size: 1.3rem;
+            color: var(--verde-oliva);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-troca p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
         .container-mapa {
             display: flex;
             flex-direction: column;
@@ -354,6 +394,21 @@
             letter-spacing: 1px;
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--nude);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
         .footer-socials {
             display: flex;
             justify-content: center;
@@ -403,6 +458,7 @@
             .hero-buttons { flex-direction: row; flex-wrap: wrap; }
             .grid-vitrine { grid-template-columns: repeat(2, 1fr); }
             .vantagens-lives { grid-template-columns: repeat(2, 1fr); display: grid; max-width: 800px; }
+            .grid-trocas { grid-template-columns: repeat(2, 1fr); }
             .container-mapa { flex-direction: row; align-items: center; }
             .bloco-endereco { text-align: left; width: 45%; }
             .foto-fachada { width: 55%; }
@@ -421,6 +477,7 @@
             <a href="#vitrine">Vitrine</a>
             <a href="#lives">Lives</a>
             <a href="#sobre">História</a>
+            <a href="#trocas">Trocas</a>
         </div>
     </nav>
 
@@ -442,7 +499,6 @@
         </div>
     </header>
 
-    <!-- ABA DAS AVALIAÇÕES ADICIONADA COM BOTÃO EM NUDE/DOURADO -->
     <div class="secao-avaliacoes">
         <div class="estrelas-gold">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -493,6 +549,30 @@
         </div>
     </section>
 
+    <section id="trocas" class="bg-trocas">
+        <h2 class="titulo-secao">Política de Trocas</h2>
+        <p class="sub-secao">Transparência e respeito para garantir a melhor experiência</p>
+        
+        <div class="grid-trocas">
+            <div class="card-troca">
+                <h4><i class="fas fa-info-circle"></i> Sobre Peças de Brechó</h4>
+                <p>Por trabalharmos com desapegos e peças únicas de segunda mão, nossa política prioriza a transparência. Detalhamos as condições de cada item durante as transmissões ao vivo.</p>
+            </div>
+            <div class="card-troca">
+                <h4><i class="fas fa-clock"></i> Prazos Importantes</h4>
+                <p>Caso precise de suporte ou note alguma divergência em seu pedido, entre em contato conosco em até 7 dias corridos após o recebimento das suas peças.</p>
+            </div>
+            <div class="card-troca">
+                <h4><i class="fas fa-tags"></i> Condições da Peça</h4>
+                <p>Para qualquer análise, a peça deve ser mantida exatamente nas mesmas condições em que foi entregue, com a etiqueta do brechó intacta e sem indícios de uso.</p>
+            </div>
+            <div class="card-troca">
+                <h4><i class="fas fa-comments"></i> Como Solicitar</h4>
+                <p>O processo é feito de forma humanizada! Fale diretamente conosco pelo nosso WhatsApp de atendimento informando o seu nome e os dados do garimpo.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="onde-estamos">
         <h2 class="titulo-secao">Onde Estamos</h2>
         <p class="sub-secao">Venha retirar suas sacolinhas ou conhecer nosso espaço em Bragança Paulista!</p>
@@ -500,28 +580,4 @@
         <div class="container-mapa">
             <div class="bloco-endereco">
                 <h4>Visite Nosso Espaço</h4>
-                <p>📍 Rua Voluntário Cícero Lamartine da Silva Leme, 680<br>Vila Bianchi • Bragança Paulista - SP</p>
-                <p><strong>Retiradas de Sacolinhas:</strong> Combine diretamente conosco pelo WhatsApp os melhores dias e horários para buscar as suas peças garimpadas.</p>
-                <a href="https://maps.google.com/?q=Rua+Voluntário+Cícero+Lamartine+da+Silva+Leme,+680,+Bragança+Paulista" class="btn btn-gold" style="max-width: 100%;" target="_blank">
-                    <i class="fas fa-route"></i> Abrir Rota no Maps
-                </a>
-            </div>
-            <img class="foto-fachada" src="FB_IMG_1782914138700.jpg" alt="Espaço Físico Garimpeira de Cabide">
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-logo">Garimpeira de Cabide</div>
-        <div class="footer-socials">
-            <a href="https://www.facebook.com/share/1CvKFmohZF/" class="social-icon social-icon-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/brechogarimpeiradecabide?igsh=MXVma2c2NzI5d2N4cw==" class="social-icon social-icon-ig" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-        <p style="font-size: 0.9rem; opacity: 0.7;">© 2026 • Todos os direitos reservados</p>
-    </footer>
-
-    <a href="https://wa.me/5511916120633?text=Olá!%20Conheci%20o%20Brechó%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20dúvida." class="wpp-flutuante-premium" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-</body>
-</html>
+                <p>📍 Rua Voluntário Cícero Lamartine da Silva Leme, 680<br>Vila Bianchi 
