@@ -34,7 +34,7 @@
             background-color: var(--off-white);
             color: var(--texto-escuro);
             overflow-x: hidden;
-            font-size: 1.1rem; /* TEXTO GERAL MAIOR */
+            font-size: 1.1rem;
         }
 
         nav {
@@ -81,7 +81,7 @@
         header {
             margin-top: 110px;
             position: relative;
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -99,19 +99,15 @@
 
         .hero-content h1 {
             font-family: var(--fonte-titulos);
-            font-size: 3.2rem; /* TÍTULO MAIOR */
+            font-size: 3.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             margin-bottom: 25px;
             line-height: 1.2;
         }
 
-        .hero-content h1 em {
-            font-style: italic;
-        }
-
         .hero-content p {
-            font-size: 1.2rem; /* PARÁGRAFO MAIOR */
+            font-size: 1.2rem;
             line-height: 1.8;
             color: var(--off-white);
             margin-bottom: 40px;
@@ -134,7 +130,7 @@
             text-decoration: none;
             padding: 18px 35px;
             border-radius: 6px;
-            font-size: 1rem; /* BOTÕES BEM GRANDES */
+            font-size: 1rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -198,7 +194,7 @@
         .titulo-secao {
             text-align: center;
             font-family: var(--fonte-titulos);
-            font-size: 2.4rem; /* TÍTULOS DE SEÇÃO MAIORES */
+            font-size: 2.4rem;
             color: var(--verde-oliva);
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -212,6 +208,27 @@
             max-width: 600px;
             margin: 0 auto 40px auto;
             line-height: 1.6;
+        }
+
+        .grid-vitrine {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .foto-vitrine-wrapper {
+            background-color: var(--branco);
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px var(--sombra-leve);
+        }
+
+        .foto-vitrine {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #eee;
         }
 
         .secao-lives {
@@ -310,11 +327,12 @@
             margin-bottom: 25px;
         }
 
-        .mapa-iframe {
+        .foto-fachada {
             width: 100%;
-            height: 380px;
-            border: 0;
+            height: 350px;
+            object-fit: cover;
             border-radius: 6px;
+            background-color: #eee;
         }
 
         footer {
@@ -353,15 +371,9 @@
             border: 1px solid rgba(255,255,255,0.15);
         }
 
-        .social-icon-fb {
-            background-color: #1877f2;
-        }
+        .social-icon-fb { background-color: #1877f2; }
+        .social-icon-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 
-        .social-icon-ig {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-
-        /* 🟢 BOTÃO FLUTUANTE DO WHATSAPP SUPER VISÍVEL */
         .wpp-flutuante-premium {
             position: fixed;
             bottom: 25px;
@@ -376,44 +388,38 @@
             align-items: center;
             font-size: 2.2rem;
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            z-index: 99999 !important; /* Força ficar por cima de absolutamente tudo */
+            z-index: 99999 !important;
             text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .wpp-flutuante-premium:hover {
-            transform: scale(1.1);
         }
 
         @media (min-width: 768px) {
-            nav {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 25px 40px;
-            }
+            nav { flex-direction: row; justify-content: space-between; padding: 25px 40px; }
             .logo { text-align: left; }
-            header { margin-top: 80px; padding: 80px 20px; }
+            header { margin-top: 80px; padding: 60px 20px; }
             .hero-buttons { flex-direction: row; flex-wrap: wrap; }
+            .grid-vitrine { grid-template-columns: repeat(2, 1fr); }
             .vantagens-lives { grid-template-columns: repeat(2, 1fr); display: grid; max-width: 800px; }
             .container-mapa { flex-direction: row; align-items: center; }
             .bloco-endereco { text-align: left; width: 45%; }
-            .mapa-iframe { width: 55%; }
+            .foto-fachada { width: 55%; }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-vitrine { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <!-- MENU DO TOPO -->
     <nav>
         <div class="logo">Garimpeira de Cabide</div>
         <div class="nav-links">
+            <a href="#vitrine">Vitrine</a>
             <a href="#lives">Lives</a>
             <a href="#sobre">História</a>
-            <a href="#onde-estamos">Localização</a>
         </div>
     </nav>
 
-    <!-- BLOCO DE ENTRADA -->
     <header>
         <div class="hero-content">
             <h1>Moda com história.<br>Estilo com <em>personalidade</em>.</h1>
@@ -423,7 +429,7 @@
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.facebook.com/share/1CvKFmohZF/" class="btn btn-facebook" target="_blank">
-                    <i class="fab fa-facebook-f"></i> Ver Facebook
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
                 <a href="https://www.instagram.com/brechogarimpeiradecabide?igsh=MXVma2c2NzI5d2N4cw==" class="btn btn-outline" target="_blank">
                     <i class="fab fa-instagram"></i> Instagram
@@ -432,7 +438,6 @@
         </div>
     </header>
 
-    <!-- AVALIAÇÕES GOOGLE -->
     <div class="secao-avaliacoes">
         <div class="estrelas-gold">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -441,7 +446,18 @@
         <p class="texto-resumo-google">Clientes confiam no Brechó Garimpeira de Cabide para encontrar peças lindas, limpas, cheirosas e com excelente custo-benefício!</p>
     </div>
 
-    <!-- SEÇÃO DAS LIVES (FACEBOOK E TIKTOK) -->
+    <section id="vitrine">
+        <h2 class="titulo-secao">Nossa Vitrine</h2>
+        <p class="sub-secao">Uma amostra dos nossos garimpos e peças impecáveis</p>
+        
+        <div class="grid-vitrine">
+            <div class="foto-vitrine-wrapper"><img class="foto-vitrine" src="look1.jpg" alt="Garimpo"></div>
+            <div class="foto-vitrine-wrapper"><img class="foto-vitrine" src="look2.jpg" alt="Garimpo"></div>
+            <div class="foto-vitrine-wrapper"><img class="foto-vitrine" src="look3.jpg" alt="Garimpo"></div>
+            <div class="foto-vitrine-wrapper"><img class="foto-vitrine" src="look4.jpg" alt="Garimpo"></div>
+        </div>
+    </section>
+
     <section id="lives">
         <div class="secao-lives">
             <h3>Nossas Vendas são nas Lives!</h3>
@@ -460,16 +476,14 @@
         </div>
     </section>
 
-    <!-- NOSSA HISTÓRIA -->
     <section id="sobre" class="bg-historia">
         <h2 class="titulo-secao">Nossa História</h2>
         <p class="sub-secao">O propósito por trás de cada cabide</p>
         <div class="conteudo-historia">
-            <p>O Brechó Garimpeira de Cabide nasceu da paixão por garimpar o melhor da moda e dar uma nova história a peças incríveis. Acreditamos em uma moda sustentável, inteligente e que valoriza a elegância feminina. Cada peça de nossa curadoria é escolhida a dedo, higienizada com cuidado e passada para chegar até você com muito carinho. Nosso foco é oferecer um atendimento humanizado e transformar o ato de vestir-se bem em uma experiência consciente e cheia de afeto.</p>
+            <p>O Brechó Garimpeira de Cabide nasceu da paixão por garimpar o melhor da moda e dar uma nova história a peças incríveis. Acreditamos em uma moda sustentável, inteligente e que valoriza a elegância feminina. Cada peça de nossa curadoria é escolher a dedo, higienizada com cuidado e passada para chegar até você com muito carinho. Nosso foco é oferecer um atendimento humanizado e transformar o ato de vestir-se bem em uma experiência consciente e cheia de afeto.</p>
         </div>
     </section>
 
-    <!-- LOCALIZAÇÃO E MAPA AJUSTADO -->
     <section id="onde-estamos">
         <h2 class="titulo-secao">Onde Estamos</h2>
         <p class="sub-secao">Venha retirar suas sacolinhas ou conhecer nosso espaço em Bragança Paulista!</p>
@@ -479,29 +493,24 @@
                 <h4>Visite Nosso Espaço</h4>
                 <p>📍 Rua Voluntário Cícero Lamartine da Silva Leme, 680<br>Vila Bianchi • Bragança Paulista - SP</p>
                 <p><strong>Retiradas de Sacolinhas:</strong> Combine diretamente conosco pelo WhatsApp os melhores dias e horários para buscar as suas peças garimpadas.</p>
-                <a href="https://maps.app.goo.gl/kx81opoKf62TgC8A8" class="btn btn-gold" style="max-width: 100%;" target="_blank">
-                    <i class="fas fa-route"></i> Abrir no Google Maps
+                <a href="https://maps.google.com/?q=Rua+Voluntário+Cícero+Lamartine+da+Silva+Leme+680+Bragança+Paulista" class="btn btn-gold" style="max-width: 100%;" target="_blank">
+                    <i class="fas fa-route"></i> Abrir Rota no Maps
                 </a>
             </div>
-            <!-- MAPA ATUALIZADO E FOCADO -->
-            <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2m2!1d-46.551105!2d-22.946399!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cec980ff65c01f%3A0x6fb86bdf3b4f62bf!2sR.%20Volunt%C3%A1rio%20C%C3%ADcero%20Lamartine%20da%20Silva%20Leme%2C%20680%20-%20Vila%20Bianchi%2C%20Bragan%C3%A7a%20Paulista%20-%20SP%2C%2012910-120!5e0!3m2!1spt-BR!2sbr!4v1719840000000" allowfullscreen="" loading="lazy"></iframe>
+            <img class="foto-fachada" src="fachada.jpg" alt="Espaço Físico Garimpeira de Cabide">
         </div>
     </section>
 
-    <!-- RODAPÉ -->
     <footer>
         <div class="footer-logo">Garimpeira de Cabide</div>
-        
         <div class="footer-socials">
             <a href="https://www.facebook.com/share/1CvKFmohZF/" class="social-icon social-icon-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/brechogarimpeiradecabide?igsh=MXVma2c2NzI5d2N4cw==" class="social-icon social-icon-ig" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-
         <p style="font-size: 0.9rem; opacity: 0.7;">© 2026 • Todos os direitos reservados</p>
     </footer>
 
-    <!-- 🟢 BOTÃO FLUTUANTE DO WHATSAPP (SEMPRE VISÍVEL) -->
-    <a href="https://wa.me/5511916120633?text=Olá!%20Conheci%20o%20Brechó%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20dúvida." class="wpp-flutuante-premium" target="_blank" title="Fale Conosco no WhatsApp">
+    <a href="https://wa.me/5511916120633?text=Olá!%20Conheci%20o%20Brechó%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20dúvida." class="wpp-flutuante-premium" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
